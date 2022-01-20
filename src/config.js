@@ -1,6 +1,7 @@
 const basePath = process.cwd();
 const { MODE } = require(`${basePath}/constants/blend_mode.js`);
 const { NETWORK } = require(`${basePath}/constants/network.js`);
+const { niftyConfig } = require(`./nifty_config.js`);
 
 const network = NETWORK.eth;
 
@@ -21,8 +22,18 @@ const solanaMetadata = {
   ],
 };
 
+const buildLayerConfiguration = () => {
+  const { traitOrder, quantity } = niftyConfig;
+  const layersOrder = traitOrder.map((name) => {
+    return { name };
+  });
+
+  const layerConfigurations = [{ growEditionSizeTo: quantity, layersOrder }];
+  return layerConfigurations;
+};
+
 // If you have selected Solana then the collection starts from 0 automatically
-const layerConfigurations = [
+const default_layerConfigurations = [
   {
     growEditionSizeTo: 5,
     layersOrder: [
@@ -36,6 +47,8 @@ const layerConfigurations = [
     ],
   },
 ];
+
+const layerConfigurations = buildLayerConfiguration();
 
 const shuffleLayerConfigurations = false;
 
