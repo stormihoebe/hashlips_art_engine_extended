@@ -12,6 +12,7 @@
     ]
   },
   "scripts": {
+    "initialize": "node src/initial.js",
     "build": "node index.js",
     "generate": "node index.js",
     "rarity": "node utils/rarity.js",
@@ -24,8 +25,10 @@
   "author": "Daniel Eugene Botha (HashLips)",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.25.0",
     "canvas": "^2.8.0",
     "gif-encoder-2": "^1.0.5",
+    "image-downloader": "^4.0.3",
     "sha1": "^1.1.1"
   }
 }
